@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- none
+
+pool: 
+  name: Default
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Deploy RHEL7 VM in Azure'
+  inputs:
+    azureSubscription: 'rgshobhit'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az config set bicep.use_binary_from_path=false
+      az bicep install
+      az deployment group create --resource-group rg_shobhit --template-file main.bicep
+- task: AzureCLI@2
+  displayName: 'Configure Apache, MySql and PHP and Install Mediawiki'
+  inputs:
+    azureSubscription: 'rgshobhit'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+        az vm run-command invoke -g rg_shobhit -n shobhit --command-id RunShellScript --scripts "@script.sh"      
