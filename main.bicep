@@ -128,7 +128,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-04-01' = {
         osProfile: {
             computerName: 'shobhit'
             adminUsername: 'adminUser'
-            adminPassword: 'Adminpassword1234'
+            adminPassword: '*******'
         }
         networkProfile: {
             networkInterfaces: [
