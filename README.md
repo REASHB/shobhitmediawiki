@@ -18,7 +18,7 @@ Below tools/Platform/Technologies were used to implement this solution
 10.php
 
 # How to use this solution
-Please follow below steps 1
+Please follow below steps one by one
 
 1. Download the code from public guthub repositiory as zip ands extract to you local folder anywhere.
 2. Create a ADO project in azure devops url is https://dev.azure.com/{orgname]}
